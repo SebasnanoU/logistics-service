@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prueba Técnica SQL</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+  }
+  .sql-box {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #dae1e7;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+  }
+  .sql-title {
+    margin-top: 0;
+  }
+  .btn {
+    background-color: #3d7e9a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn:hover {
+    background-color: #265d7e;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1 class="sql-title">Ejercicio SQL 1</h1>
+  <div class="sql-box">
+    SELECT s.school_name, st.student_name, st.city<br>
+    FROM school s<br>
+    JOIN student st ON s.city = st.city AND s.school_id = st.school_id<br>
+    WHERE st.city != 'New York';
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 2</h1>
+  <div class="sql-box">
+    SELECT st.student_name, sub.subject_name, sub.lecturer, sub.max_score<br>
+    FROM student st<br>
+    JOIN subject sub ON st.subject_id = sub.subject_id<br>
+    WHERE sub.subject_name != 'Computer Science' AND (sub.max_score < 100 OR sub.max_score > 200);
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 3</h1>
+  <div class="sql-box">
+    Problema identificado: La consulta tiene varios errores, incluyendo el uso de un alias de columna en la cláusula WHERE que no es válido en ese contexto, y parece haber dos consultas separadas sin separación adecuada.
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 4</h1>
+  <div class="sql-box">
+    SELECT name <br>
+    FROM worker <br>
+    WHERE id NOT IN (SELECT manager_id FROM departments);
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 5</h1>
+  <div class="sql-box">
+    SELECT DEPT_ID, MAX(SALARY) AS MaxSalary<br>
+    FROM EMPLOYEE<br>
+    GROUP BY DEPT_ID;
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 6</h1>
+  <div class="sql-box">
+    SELECT CURRENT_DATE;
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 7</h1>
+  <div class="sql-box">
+    -- SQL no tiene una función directa para validar el formato de una fecha en la consulta. 
+    <br>
+    -- Esto generalmente se manejaría en el nivel de aplicación o mediante el uso de expresiones regulares si el sistema de base de datos lo admite.
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 8</h1>
+  <div class="sql-box">
+    SELECT sub.subject_name, COUNT(st.student_id) AS student_count<br>
+    FROM subject sub<br>
+    JOIN student st ON sub.subject_id = st.subject_id<br>
+    GROUP BY sub.subject_name<br>
+    HAVING COUNT(st.student_id) >= 3;
+  </div>
+
+  <h1 class="sql-title">Ejercicio SQL 9</h1>
+  <div class="sql-box">
+    SELECT c.NAME, AVG(w.AGE) AS AverageAge, MIN(w.AGE) AS YoungestAge<br>
+    FROM company c<br>
+    JOIN workers w ON c.ID = w.COMPANY_ID<br>
+    GROUP BY c.NAME;
+  </div>
+  <button class="btn" onclick="location.href='/api'">Segundo Punto</button>
+</div>
+</body>
+</html>
